@@ -1,0 +1,65 @@
+﻿
+/* Styles to forms */
+
+.container_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+.form {
+    position: relative;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+    background: #00000018;
+}
+
+.title {
+    text-align: center;
+    color: #1DBEB4;
+    font-size: 30px;
+    font-family: sans-serif;
+    padding-bottom: 20px;
+}
+
+.form label{
+    color: #383B58;
+    font-family:  sans-serif;
+    margin-top: 10px;
+}
+
+.container_forms{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styles to the login button */
+
+.btn_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.button{
+    background: #27B43E;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button2{
+    background: #27B43E;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

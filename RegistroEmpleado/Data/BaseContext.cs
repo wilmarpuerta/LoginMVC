@@ -9,7 +9,7 @@ namespace RegistroEmpleado.Data
 
         }
         public DbSet<Admin> Admins { get; set; }
-        public DbSet<Empleoyee> Empleoyees { get; set; }
+        public DbSet<Employee> Empleoyees { get; set; }
 
     }
 }

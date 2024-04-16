@@ -1,0 +1,29 @@
+@{
+    ViewBag.Title = "Login";
+    ViewBag.Css = "Login.css";
+    ViewBag.Favicon = "Login.svg";
+}
+
+<!-- Forms container -->
+
+<section class="container_form">
+<div class="form">
+    <p class="title">Inicio de sesion</p>
+    <div class="container_forms">
+        <div class="mb-3">
+          <label for="nameUser" class="form-label">Nombre del usuario</label>
+          <input type="text" class="form-control" id="nameUser">
+        </div>
+    </div>
+    <div class="container_forms">
+        <label for="inputPassword5" class="form-label">Contraseña</label>
+        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+    </div>
+<!-- sing in button -->
+
+<div class="btn_login">
+    <a class="button2" asp-controller="Home" asp-action="Index">Acceder</a>
+</div>
+</div>
+
+</section>
