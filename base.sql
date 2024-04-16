@@ -7,8 +7,7 @@ CREATE TABLE Admins (
     Names VARCHAR(45) NOT NULL,
     LastNames VARCHAR(45) NOT NULL,
     PhotoProfile VARCHAR(255) NOT NULL,
-    Password VARCHAR
-    (45) NOT NULL,
+    Password VARCHAR(45) NOT NULL,
     LoginAt DATE,
     LogOffAt DATE
 );
