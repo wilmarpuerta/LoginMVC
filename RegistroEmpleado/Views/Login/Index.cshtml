@@ -7,25 +7,26 @@
 <!-- Forms container -->
 
 <section class="container_form">
-<div class="form">
-    <p class="title">Inicio de sesion</p>
-    <form asp-controller="Login" asp-action="Acceder" method="get">
-    <div class="container_forms">
-        <div class="mb-3">
-          <label for="nameUser" class="form-label">Nombre del usuario</label>
-          <input type="text" class="form-control" id="nameUser" name="username">
-        </div>
-    </div>
-    <div class="container_forms">
-        <label for="inputPassword5" class="form-label">Contraseña</label>
-        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password">
-    </div>
-<!-- sing in button -->
+    <div class="form">
+        <p class="title">Inicio de sesion</p>
+        <form asp-controller="Login" asp-action="Acceder" method="get">
+            <div class="container_forms">
+                <div class="mb-3">
+                    <label for="nameUser" class="form-label">Nombre del usuario</label>
+                    <input type="text" class="form-control @ViewBag.ClaseElemento" id="nameUser" name="username">
+                </div>
+            </div>
+            <div class="container_forms">
+                <label for="inputPassword5" class="form-label">Contraseña</label>
+                <input type="password" id="inputPassword5" class="form-control @ViewBag.ClaseElemento" aria-describedby="passwordHelpBlock" name="password">
+            </div>
+            <!-- sing in button -->
 
-<div class="btn_login">
-    <input type="submit" class="button2" value="Acceder">
-</div>
-</form>
-</div>
+            <div class="btn_login">
+                <input type="submit" class="button2" value="Acceder">
+            </div>
+        </form>
+    </div>
+    <span class="text-danger mt-3">@ViewBag.Danger</span>
 
 </section>
