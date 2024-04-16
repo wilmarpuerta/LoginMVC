@@ -1,6 +1,12 @@
-﻿namespace RegistroEmpleado.Controllers;
+﻿
+using Microsoft.AspNetCore.Mvc;
 
-public class Login
+namespace RegistroEmpleado.Controllers;
+
+public class LoginController : Controller
 {
-    
+    public IActionResult Index()
+    {
+        return View();
+    }
 }

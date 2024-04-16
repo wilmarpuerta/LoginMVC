@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    <link rel="short icon" type="image/x-icon" href="~/favicoin/@ViewBag.Favicon">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RegistroEmpleado.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/@ViewBag.Css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Login</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
                         </li>
                     </ul>
                 </div>
