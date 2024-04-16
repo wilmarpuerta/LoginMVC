@@ -17,5 +17,9 @@ namespace RegistroEmpleado.Controllers
         {
             return View(await _context.Admins.ToListAsync());
         }
+        public IActionResult LoginUp()
+        {
+            return View();
+        }
     }
 }
