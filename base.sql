@@ -12,7 +12,7 @@ CREATE TABLE Admins (
     LogOffAt DATE
 );
 
-CREATE TABLE Empleoyees (
+CREATE TABLE Employees (
     Id INT PRIMARY KEY AUTO_INCREMENT,
     Cedula INT UNIQUE NOT NULL,
     Email VARCHAR(255) UNIQUE NOT NULL,
@@ -24,3 +24,4 @@ CREATE TABLE Empleoyees (
     LoginAt DATE,
     LogOffAt DATE
 );
+

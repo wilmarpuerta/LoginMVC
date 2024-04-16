@@ -1,6 +1,6 @@
 namespace RegistroEmpleado.Controllers
 {
-    public class EmpleoyeesController : Controller
+    public class EmpleyeesController : Controller
     {
         
     }
