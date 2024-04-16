@@ -9,7 +9,7 @@ namespace RegistroEmpleado.Controllers
     {
         public readonly BaseContext _context;
 
-        public AdminsController(BaseContext context)
+        public AdminsController(BaseContext _context)
         {
             _context = context;
         }
