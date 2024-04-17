@@ -21,9 +21,18 @@ namespace RegistroEmpleado.Controllers
         {
             return View(await _context.Employees.ToListAsync());
         }
-        public IActionResult LogUp()
+        public IActionResult Register()
         {
             return View();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Register(Employee emp)
+        {
+            emp.PhotoProfile = "User.svg";
+            _context.Employees.Add(emp);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
           //Eliminar
