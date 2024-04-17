@@ -54,5 +54,16 @@ public async Task<IActionResult> Record(int id)
 {
      var user = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.id_User == id);
 }
+
+  [HttpPost]
+        public async Task<IActionResult> (User Use)
+        {
+            Use.LoginAt=System.DataTime;
+            Use.LogOffAt=System.DataTime;
+            _context.TimeRegisters.Add(emp);
+            _context.SaveChanges();
+        }
+
+
     }
 }
