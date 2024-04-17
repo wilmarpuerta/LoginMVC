@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Record";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table class="table  table-bordered mt-5 text-center table-striped table-hover">
+        <thead class="table table-black">
+            <tr>
+                <th>Record</th>
+            </tr>
+            <tr>
+                <td>Id</td>
+                <td>LoginAt</td>
+                <td>LogOffAt</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Register in Model)
+            {
+                <tr>
+                    <td>@Register.Id</td>
+                    <td>@Register.LoginAt</td>
+                    <td>@Register.LogOffAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+
+</html>

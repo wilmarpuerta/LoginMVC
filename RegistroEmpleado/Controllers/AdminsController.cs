@@ -50,6 +50,9 @@ public async Task<IActionResult> DeleteUser(int id)
     await _context.SaveChangesAsync();
     return RedirectToAction("Manage");
 }
-
+public async Task<IActionResult> Record(int id)
+{
+     var employee = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.id_employee == id);
+}
     }
 }

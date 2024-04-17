@@ -8,7 +8,7 @@ namespace RegistroEmpleado.Data
         public BaseContext(DbContextOptions<BaseContext> options) : base(options){
 
         }
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<TimeRegister> TimeRegisters { get; set; }
         public DbSet<Employee> Employees { get; set; }
 
     }

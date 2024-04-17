@@ -22,8 +22,7 @@
                 <td>Phone</td>
                 <td>Email</td>
                 <td>Password</td>
-                <td>LoginAt</td>
-                <td>LogOffAt</td>
+                <td>Record</td>
             </tr>
         </thead>
         <tbody>
@@ -38,8 +37,7 @@
                     <td>@Employee.Phone</td>
                     <td>@Employee.Email</td>
                     <td>@Employee.Password</td>
-                    <td>@Employee.LoginAt</td>
-                    <td>@Employee.LogOffAt</td>
+                    <td><a asp-controller="Admins" asp-action="Record" asp-route-id="@Employee.Id">Record</a></td>
                     <td>
                         <a asp-controller="Admins" asp-action="Delete" asp-route-id="@Employee.Id" class="btn btn-secondary">Delete</a>
                     </td>
