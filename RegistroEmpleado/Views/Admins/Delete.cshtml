@@ -1,0 +1,25 @@
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Eliminar Usuario</h5>
+            <p class="card-text">Esta seguro que desea eliminar a @Model.Names @Model.LastNames </p>
+            <a asp-controller="Admins" asp-action="Index">Eliminar</a>
+        </div>
+    </div>
+</body>
+
+</html>

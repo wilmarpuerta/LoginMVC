@@ -10,8 +10,8 @@ namespace RegistroEmpleado.Models
         public string LastNames { get; set; }
         public string PhotoProfile { get; set; }
         public string Password { get; set; }
-        public DateTime LoginAt { get; set; }
-        public DateTime LogOffAt { get; set; }
+        public DateTime? LoginAt { get; set; }
+        public DateTime? LogOffAt { get; set; }
 
     }
 }

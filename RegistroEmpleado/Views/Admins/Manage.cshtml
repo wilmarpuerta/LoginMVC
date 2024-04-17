@@ -27,21 +27,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var Admin in Model)
+            @foreach (var Employee in Model)
             {
                 <tr>
-                    <td>@Admin.Id</td>
-                    <td>@Admin.Cedula</td>
-                    <td>@Admin.Names</td>
-                    <td>@Admin.LastNames</td>
-                    <td>@Admin.PhotoProfile</td>
-                    <td>@Admin.Phone</td>
-                    <td>@Admin.Email</td>
-                    <td>@Admin.Password</td>
-                    <td>@Admin.LoginAt</td>
-                    <td>@Admin.LogOffAt</td>
+                    <td>@Employee.Id</td>
+                    <td>@Employee.Cedula</td>
+                    <td>@Employee.Names</td>
+                    <td>@Employee.LastNames</td>
+                    <td>@Employee.PhotoProfile</td>
+                    <td>@Employee.Phone</td>
+                    <td>@Employee.Email</td>
+                    <td>@Employee.Password</td>
+                    <td>@Employee.LoginAt</td>
+                    <td>@Employee.LogOffAt</td>
                     <td>
-                        <a asp-action="Delete" asp-route-id="@Admin.Id">Delete</a>
+                        <a asp-controller="Admins" asp-action="Delete" asp-route-id="@Admin.Id" class="btn btn-secondary">Delete</a>
                     </td>
                 </tr>
             }

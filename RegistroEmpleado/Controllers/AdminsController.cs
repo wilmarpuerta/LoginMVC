@@ -7,19 +7,33 @@ namespace RegistroEmpleado.Controllers
 {
     public class  AdminsController : Controller
     {
-        public readonly BaseContext _context;
+        private readonly BaseContext _context;
 
-        public AdminsController(BaseContext _context)
+        public AdminsController(BaseContext context)
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Admins.ToListAsync());
+            return View();
+        }
+        public async Task<IActionResult> Manage()
+        {
+            return View(await _context.Employees.ToListAsync());
         }
         public IActionResult LoginUp()
         {
             return View();
+        }
+
+          //Eliminar
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var employee = await _context.Employees.FindAsync(id);
+            _context.Employees.Remove(employee);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
