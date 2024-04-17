@@ -21,14 +21,19 @@ namespace RegistroEmpleado.Controllers
         {
             return View(await _context.Employees.ToListAsync());
         }
-        public IActionResult LoginUp()
+        public IActionResult LogUp()
         {
             return View();
         }
 
           //Eliminar
+          
+          public async Task<IActionResult> Delete(int id)
+          {
+              return View(await _context.Employees.FirstOrDefaultAsync(m => m.Id == id));
+          }
 
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             var employee = await _context.Employees.FindAsync(id);
             _context.Employees.Remove(employee);
