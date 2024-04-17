@@ -8,8 +8,8 @@ namespace RegistroEmpleado.Data
         public BaseContext(DbContextOptions<BaseContext> options) : base(options){
 
         }
-        public DbSet<TimeRegister> TimeRegisters { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<TimeRegister>TimeRegisters { get; set; }
+        public DbSet<User>Users { get; set; }
 
     }
 }
