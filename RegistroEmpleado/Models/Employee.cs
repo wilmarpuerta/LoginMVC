@@ -1,6 +1,6 @@
 namespace RegistroEmpleado.Models
 {
-    public class Employee
+    public class User
     {
         public int Id { get; set; }
         public int Cedula { get; set; }

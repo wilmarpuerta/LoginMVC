@@ -9,7 +9,7 @@ namespace RegistroEmpleado.Data
 
         }
         public DbSet<TimeRegister> TimeRegisters { get; set; }
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<User> Users { get; set; }
 
     }
 }

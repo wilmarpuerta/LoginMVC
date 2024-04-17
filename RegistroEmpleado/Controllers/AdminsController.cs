@@ -19,7 +19,7 @@ namespace RegistroEmpleado.Controllers
         }
         public async Task<IActionResult> Manage()
         {
-            return View(await _context.Employees.ToListAsync());
+            return View(await _context.Users.ToListAsync());
         }
         public IActionResult Register()
         {
@@ -27,10 +27,10 @@ namespace RegistroEmpleado.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Register(Employee emp)
+        public async Task<IActionResult> Register(User Use)
         {
-            emp.PhotoProfile = "User.svg";
-            _context.Employees.Add(emp);
+            Use.PhotoProfile = "User.svg";
+            _context.Users.Add(emp);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -39,20 +39,20 @@ namespace RegistroEmpleado.Controllers
           
      public async Task<IActionResult> Delete(int id)
 {
-    var employee = await _context.Employees.FirstOrDefaultAsync(m => m.Id == id);
-    return View(employee);
+    var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+    return View(user);
 }
 
 public async Task<IActionResult> DeleteUser(int id)
 {
-    var employee = await _context.Employees.FindAsync(id);
-    _context.Employees.Remove(employee);
+    var user = await _context.Users.FindAsync(id);
+    _context.Users.Remove(user);
     await _context.SaveChangesAsync();
     return RedirectToAction("Manage");
 }
 public async Task<IActionResult> Record(int id)
 {
-     var employee = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.id_employee == id);
+     var user = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.id_User == id);
 }
     }
 }
