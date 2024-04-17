@@ -27,10 +27,10 @@ namespace RegistroEmpleado.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Register(User Use)
+        public async Task<IActionResult> Register(User user)
         {
-            Use.PhotoProfile = "User.svg";
-            _context.Users.Add(emp);
+            user.PhotoProfile = "User.svg";
+            _context.Users.Add(user);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -52,7 +52,7 @@ public async Task<IActionResult> DeleteUser(int id)
 }
 public async Task<IActionResult> Record(int id)
 {
-     var user = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.id_User == id);
+     var user = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.IdUser == id);
 }
     }
 }

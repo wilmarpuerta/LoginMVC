@@ -19,7 +19,7 @@ public class LoginController : Controller
 
     public IActionResult Acceder(string username, string password)
     {
-        var user = _context.Admins.AsQueryable();
+        var user = _context.Users.AsQueryable();
         
         if (user.Any(u => u.Names == username && u.Password == password))
         {
