@@ -28,17 +28,19 @@ namespace RegistroEmpleado.Controllers
 
           //Eliminar
           
-          public async Task<IActionResult> Delete(int id)
-          {
-              return View(await _context.Employees.FirstOrDefaultAsync(m => m.Id == id));
-          }
+     public async Task<IActionResult> Delete(int id)
+{
+    var employee = await _context.Employees.FirstOrDefaultAsync(m => m.Id == id);
+    return View(employee);
+}
 
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-            var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+public async Task<IActionResult> DeleteUser(int id)
+{
+    var employee = await _context.Employees.FindAsync(id);
+    _context.Employees.Remove(employee);
+    await _context.SaveChangesAsync();
+    return RedirectToAction("Manage");
+}
+
     }
 }

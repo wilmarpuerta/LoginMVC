@@ -1,4 +1,4 @@
-
+@model Employee
 @{
     ViewData["Title"] = "Index";
 }
@@ -16,8 +16,10 @@
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Eliminar Usuario</h5>
-            <p class="card-text">Esta seguro que desea eliminar a @Model.Names @Model.LastNames </p>
-            <a asp-controller="Admins" asp-action="Index">Eliminar</a>
+            <p class="card-text">¿Está seguro que desea eliminar a @Model.Names @Model.LastNames?</p>
+
+            <a asp-controller="Admins" asp-action="DeleteUser" asp-route-id="@Model.Id">Eliminar</a>
+
         </div>
     </div>
 </body>
