@@ -8,22 +8,18 @@ CREATE TABLE Admins (
     LastNames VARCHAR(45) NOT NULL,
     PhotoProfile VARCHAR(255) NOT NULL,
     Password VARCHAR(45) NOT NULL,
-    LoginAt DATE,
-    LogOffAt DATE
+
 );
 
-CREATE TABLE Employees (
+CREATE TABLE TimeRegister (
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    Cedula INT UNIQUE NOT NULL,
-    Email VARCHAR(255) UNIQUE NOT NULL,
-    Phone VARCHAR(20) NOT NULL,
-    Names VARCHAR(45) NOT NULL,
-    LastNames VARCHAR(45) NOT NULL,
-    PhotoProfile VARCHAR(255) NOT NULL,
-    Password VARCHAR(45) NOT NULL,
-    LoginAt DATE,
-    LogOffAt DATE
+    id_employee INT NOT NULL,
+    LoginAt DATETIME,
+    LogOffAt DATETIME,
+    FOREIGN KEY (id_employee) REFERENCES Employees(Id)
 );
+
+
 
 
 INSERT INTO Admins (Cedula, Email, Phone, Names, LastNames, PhotoProfile, Password,LoginAt,LogOffAt)
