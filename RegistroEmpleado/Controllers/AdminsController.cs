@@ -5,7 +5,7 @@ namespace RegistroEmpleado.Controllers
 {
     public class  AdminsController : Controller
     {
-        public IActionResult LoginUp()
+        public IActionResult LogUp()
         {
             return View();
         }
