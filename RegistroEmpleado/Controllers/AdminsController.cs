@@ -50,9 +50,22 @@ public async Task<IActionResult> DeleteUser(int id)
     await _context.SaveChangesAsync();
     return RedirectToAction("Manage");
 }
-public async Task<IActionResult> Record(int id)
+
+
+/*public async Task<IActionResult> Record(int id)
 {
      var user = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.IdUser == id);
 }
+
+  [HttpPost]
+        public async Task<IActionResult> (User user)
+        {
+            user.LoginAt=System.DataTime;
+            user.LogoutAt=System.DataTime;
+            _context.TimeRegisters.Add(user);
+            _context.SaveChanges();
+        }*/
+
+
     }
 }
