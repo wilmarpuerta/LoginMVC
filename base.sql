@@ -25,10 +25,18 @@ CREATE TABLE Employees (
     LogOffAt DATE
 );
 
--- Inserting Wilmar Puerta
-INSERT INTO Admins (Cedula, Email, Phone, Names, LastNames, PhotoProfile, Password)
-VALUES (123456789, 'wilmar@example.com', '123-456-7890', 'Wilmar', 'Puerta', 'wilmar_profile.jpg', 'password123');
 
--- Inserting Anthony Muñoz
-INSERT INTO Admins (Cedula, Email, Phone, Names, LastNames, PhotoProfile, Password)
-VALUES (987654321, 'anthony@example.com', '987-654-3210', 'Anthony', 'Muñoz', 'anthony_profile.jpg', 'password456');
+INSERT INTO Admins (Cedula, Email, Phone, Names, LastNames, PhotoProfile, Password,LoginAt,LogOffAt)
+VALUES (123456789, 'wilmar@example.com', '123-456-7890', 'Wilmar', 'Puerta', 'wilmar_profile.jpg', 'password123',NOW(),NOW());
+
+
+INSERT INTO Admins (Cedula, Email, Phone, Names, LastNames, PhotoProfile, Password,LoginAt,LogOffAt)
+VALUES (987654321, 'anthony@example.com', '987-654-3210', 'Anthony', 'Muñoz', 'anthony_profile.jpg', 'password456',NOW(),NOW());
+
+INSERT INTO Employees (Cedula, Email, Phone, Names, LastNames, PhotoProfile,Password,LoginAt,LogOffAt)
+VALUES (123456789, 'wilmar@example.com', '123-456-7890', 'Wilmar', 'Puerta', 'wilmar_profile.jpg', 'password123',NOW(),NOW());
+
+
+INSERT INTO Employees (Cedula, Email, Phone, Names, LastNames, PhotoProfile, Password,LoginAt,LogOffAt)
+VALUES (987654321, 'anthony@example.com', '987-654-3210', 'Anthony', 'Muñoz', 'anthony_profile.jpg', 'password456',NOW(),NOW());
+
