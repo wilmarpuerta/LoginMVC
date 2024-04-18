@@ -1,51 +1,37 @@
 @{
     ViewData["Title"] = "Manage";
 }
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <table class="table  table-bordered mt-5 text-center table-striped table-hover">
-        <thead class="table table-black">
+<table class="table  table-bordered mt-5 text-center table-striped table-hover">
+    <thead class="table table-black">
+        <tr>
+            <td>Id</td>
+            <td>Cedula</td>
+            <td>Names</td>
+            <td>LastNames</td>
+            <td>PhotoProfile</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Password</td>
+            <td>Record</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Employee in Model)
+        {
             <tr>
-                <td>Id</td>
-                <td>Cedula</td>
-                <td>Names</td>
-                <td>LastNames</td>
-                <td>PhotoProfile</td>
-                <td>Phone</td>
-                <td>Email</td>
-                <td>Password</td>
-                <td>Record</td>
+                <td>@Employee.Id</td>
+                <td>@Employee.Cedula</td>
+                <td>@Employee.Names</td>
+                <td>@Employee.LastNames</td>
+                <td>@Employee.PhotoProfile</td>
+                <td>@Employee.Phone</td>
+                <td>@Employee.Email</td>
+                <td>@Employee.Password</td>
+                @* <td><a asp-controller="Admins" asp-action="Record" asp-route-id="@Employee.Id">Record</a></td> *@
+                <td>
+                    <a asp-controller="Admins" asp-action="Delete" asp-route-id="@Employee.Id" class="btn btn-secondary">Delete</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var Employee in Model)
-            {
-                <tr>
-                    <td>@Employee.Id</td>
-                    <td>@Employee.Cedula</td>
-                    <td>@Employee.Names</td>
-                    <td>@Employee.LastNames</td>
-                    <td>@Employee.PhotoProfile</td>
-                    <td>@Employee.Phone</td>
-                    <td>@Employee.Email</td>
-                    <td>@Employee.Password</td>
-                    <td><a asp-controller="Admins" asp-action="Record" asp-route-id="@Employee.Id">Record</a></td>
-                    <td>
-                        <a asp-controller="Admins" asp-action="Delete" asp-route-id="@Employee.Id" class="btn btn-secondary">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</body>
-
-
-</html>
+        }
+    </tbody>
+</table>

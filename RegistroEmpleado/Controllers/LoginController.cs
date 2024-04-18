@@ -31,7 +31,15 @@ public class LoginController : Controller
             _context.TimeRegisters.Add(time);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            if (userfind.TipoUser == 1)
+            {
+                return RedirectToAction("Index", "Admins");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Users");
+            }
+
         }
         else
         {
