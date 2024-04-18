@@ -49,4 +49,15 @@ public class LoginController : Controller
 
         return View("Index", "Login");
     }
+    
+    public IActionResult Logout(TimeRegister time)
+    {
+        var user = _context.Users.First(u => u.Id == Convert.ToInt32(HttpContext.Session.GetString("userLog")));
+        time.IdUser = user.Id;
+        time.LogoutAt = DateTime.Now;
+        _context.TimeRegisters.Add(time);
+        _context.SaveChanges();
+        HttpContext.Session.Remove("userLog");
+        return RedirectToAction("Index", "Login");
+    }
 }
