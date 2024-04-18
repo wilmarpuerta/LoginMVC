@@ -27,9 +27,13 @@
                 <td>@Employee.Phone</td>
                 <td>@Employee.Email</td>
                 <td>@Employee.Password</td>
-                @* <td><a asp-controller="Admins" asp-action="Record" asp-route-id="@Employee.Id">Record</a></td> *@
                 <td>
-                    <a asp-controller="Admins" asp-action="Delete" asp-route-id="@Employee.Id" class="btn btn-secondary">Delete</a>
+                    <a asp-controller="Admins" asp-action="Record"
+                        asp-route-id="@Employee.Id">Record</a>
+                </td>
+                <td>
+                    <a asp-controller="Admins" asp-action="Delete"
+                        asp-route-id="@Employee.Id" class="btn btn-secondary">Delete</a>
                 </td>
             </tr>
         }

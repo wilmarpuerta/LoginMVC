@@ -52,11 +52,13 @@ public async Task<IActionResult> DeleteUser(int id)
 }
 
 
-/* public async Task<IActionResult> Record(int id)
+public async Task<IActionResult> Record(int id)
 {
-     var user = await _context.TimeRegisters.FirstOrDefaultAsync(m => m.IdUser == id);
+    var timeRegisters = await _context.TimeRegisters.Where(m => m.IdUser == id).ToListAsync();
+    return View(timeRegisters);
 }
 
- */
+
     }
 }
+
