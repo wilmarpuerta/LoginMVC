@@ -1,7 +1,6 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RegistroEmpleado.Data;
-
+using RegistroEmpleado.Models;
 namespace RegistroEmpleado.Controllers;
 
 public class LoginController : Controller
@@ -17,14 +16,18 @@ public class LoginController : Controller
         return View();
     }
 
-    public IActionResult Acceder(string username, string password)
+    public IActionResult Acceder(string username, string password, TimeRegister time)
     {
-        var user = _context.Users.AsQueryable();
-
-        if (user.Any(u => u.Names == username && u.Password == password))
+        var user = _context.Users.FirstOrDefault(u => u.Names == username && u.Password == password);
+        
+        if (user != null)
         {
-            var userLog = _context.Users.Where(u => u.Names == username && u.Password == password).First();
-            HttpContext.Session.SetString("UserName", userLog.Names);
+
+                time.IdUser = user.Id;
+                time.LoginAt= DateTime.Now;
+                _context.TimeRegisters.Add(time);
+                _context.SaveChanges();
+
             return RedirectToAction("Index", "Home");
         }
         else
