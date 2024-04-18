@@ -28,6 +28,7 @@ public class LoginController : Controller
             HttpContext.Session.SetString("userLog", userfind.Id.ToString());
             time.IdUser = userfind.Id;
             time.LoginAt = DateTime.Now;
+            time.LogoutAt = null;
             _context.TimeRegisters.Add(time);
             _context.SaveChanges();
 
@@ -50,12 +51,12 @@ public class LoginController : Controller
         return View("Index", "Login");
     }
     
-    public IActionResult Logout(TimeRegister time)
+    public IActionResult Logout()
     {
-        var user = _context.Users.First(u => u.Id == Convert.ToInt32(HttpContext.Session.GetString("userLog")));
-        time.IdUser = user.Id;
-        time.LogoutAt = DateTime.Now;
-        _context.TimeRegisters.Add(time);
+        var idRegister = _context.TimeRegisters.Max(t => t.Id);
+        var record = _context.TimeRegisters.FirstOrDefault(r => r.Id == idRegister);
+        record.LogoutAt = DateTime.Now;
+        _context.TimeRegisters.Update(record);
         _context.SaveChanges();
         HttpContext.Session.Remove("userLog");
         return RedirectToAction("Index", "Login");
