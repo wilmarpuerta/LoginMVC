@@ -13,10 +13,10 @@ CREATE TABLE Users(
 
 CREATE TABLE TimeRegisters (
     Id INT PRIMARY KEY AUTO_INCREMENT,
-    id_User INT NOT NULL,
+    IdUser INT NOT NULL,
     LoginAt DATETIME,
-    LogOffAt DATETIME,
-    FOREIGN KEY (id_User) REFERENCES Users(Id)
+    LogoutAt DATETIME,
+    FOREIGN KEY (IdUser) REFERENCES Users(Id)
 );
 
 

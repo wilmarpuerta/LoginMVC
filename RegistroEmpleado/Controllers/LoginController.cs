@@ -20,9 +20,11 @@ public class LoginController : Controller
     public IActionResult Acceder(string username, string password)
     {
         var user = _context.Users.AsQueryable();
-        
+
         if (user.Any(u => u.Names == username && u.Password == password))
         {
+            var userLog = _context.Users.Where(u => u.Names == username && u.Password == password).First();
+            HttpContext.Session.SetString("UserName", userLog.Names);
             return RedirectToAction("Index", "Home");
         }
         else

@@ -1,6 +1,6 @@
 namespace RegistroEmpleado.Models
 {
-    public class User
+    public abstract class User
     {
         public int Id { get; set; }
         public int Cedula { get; set; }
@@ -11,7 +11,8 @@ namespace RegistroEmpleado.Models
         public string? LastNames { get; set; }
         public string? PhotoProfile { get; set; }
         public string? Password { get; set; }
-  
+        public abstract Microsoft.AspNetCore.Http.ISession Session { get; set; }
+
 
     }
 }
