@@ -11,8 +11,6 @@ namespace RegistroEmpleado.Models
         public string? LastNames { get; set; }
         public string? PhotoProfile { get; set; }
         public string? Password { get; set; }
-        /* public abstract Microsoft.AspNetCore.Http.ISession Session { get; set; } */
-
 
     }
 }

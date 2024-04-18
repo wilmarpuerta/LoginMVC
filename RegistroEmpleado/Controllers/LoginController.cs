@@ -25,7 +25,7 @@ public class LoginController : Controller
 
         if (userfind != null)
         {
-
+            HttpContext.Session.SetString("userLog", userfind.Id.ToString());
             time.IdUser = userfind.Id;
             time.LoginAt = DateTime.Now;
             _context.TimeRegisters.Add(time);
