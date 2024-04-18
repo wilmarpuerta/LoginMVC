@@ -6,7 +6,7 @@ namespace RegistroEmpleado.Controllers;
 public class LoginController : Controller
 {
     private readonly BaseContext _context;
-    
+
     public LoginController(BaseContext context)
     {
         _context = context;
@@ -18,15 +18,18 @@ public class LoginController : Controller
 
     public IActionResult Acceder(string username, string password, TimeRegister time)
     {
-        var user = _context.Users.FirstOrDefault(u => u.Names == username && u.Password == password);
-        
-        if (user != null)
+        /* var user = _context.Users.AsQueryable(); */
+
+        var userfind = _context.Users.FirstOrDefault(u => u.Names == username && u.Password == password);
+
+
+        if (userfind != null)
         {
 
-                time.IdUser = user.Id;
-                time.LoginAt= DateTime.Now;
-                _context.TimeRegisters.Add(time);
-                _context.SaveChanges();
+            time.IdUser = userfind.Id;
+            time.LoginAt = DateTime.Now;
+            _context.TimeRegisters.Add(time);
+            _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
