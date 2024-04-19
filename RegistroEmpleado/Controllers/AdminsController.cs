@@ -35,9 +35,10 @@ public class AdminsController : Controller
     public async Task<IActionResult> Register(User user)
     {
         user.PhotoProfile = "User.svg";
+        user.TipoUser = 2;
         _context.Users.Add(user);
         _context.SaveChanges();
-        return RedirectToAction("Index");
+        return RedirectToAction("Manage");
     }
 
     //Eliminar
