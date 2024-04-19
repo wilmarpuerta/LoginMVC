@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RegistroEmpleado.Data;
 using RegistroEmpleado.Models;
 namespace RegistroEmpleado.Controllers;
@@ -67,14 +68,15 @@ public class LoginController : Controller
     
     public async Task<IActionResult> Logout()
     {
-        var idRegister = _context.TimeRegisters.Max(t => t.Id);
-        var record = _context.TimeRegisters.FirstOrDefault(r => r.Id == idRegister);
+        var idUserLog = int.Parse(HttpContext.Session.GetString("userLog"));
+        var listRecords = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).ToListAsync();
+        var idRecord = _context.TimeRegisters.OrderByDescending(m => m.Id ).First().Id;
+        var record = _context.TimeRegisters.FirstOrDefault(m => m.Id == idRecord);
         record.LogoutAt = DateTime.Now;
         _context.TimeRegisters.Update(record);
         _context.SaveChanges();
         HttpContext.Session.Remove("userLog");
         await HttpContext.SignOutAsync();
         return RedirectToAction("Index", "Home");
-        return RedirectToAction("Index", "Login");
     }
 }
