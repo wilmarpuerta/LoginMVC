@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using RegistroEmpleado.Data;
 using RegistroEmpleado.Models;
 namespace RegistroEmpleado.Controllers;
@@ -16,6 +19,7 @@ public class LoginController : Controller
         return View();
     }
 
+    
     public IActionResult Acceder(string username, string password, TimeRegister time)
     {
         /* var user = _context.Users.AsQueryable(); */
@@ -31,9 +35,18 @@ public class LoginController : Controller
             time.LogoutAt = null;
             _context.TimeRegisters.Add(time);
             _context.SaveChanges();
+            
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, username)
+            };
+            var claimsIdentity = new ClaimsIdentity(claims, "Acceder");
+ 
+            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
             if (userfind.TipoUser == 1)
             {
+                // return Redirect(ReturnUrl == null ? "/Home" : ReturnUrl);
                 return RedirectToAction("Index", "Admins");
             }
             else
@@ -51,7 +64,8 @@ public class LoginController : Controller
         return View("Index", "Login");
     }
     
-    public IActionResult Logout()
+    
+    public async Task<IActionResult> Logout()
     {
         var idRegister = _context.TimeRegisters.Max(t => t.Id);
         var record = _context.TimeRegisters.FirstOrDefault(r => r.Id == idRegister);
@@ -59,6 +73,8 @@ public class LoginController : Controller
         _context.TimeRegisters.Update(record);
         _context.SaveChanges();
         HttpContext.Session.Remove("userLog");
+        await HttpContext.SignOutAsync();
+        return RedirectToAction("Index", "Home");
         return RedirectToAction("Index", "Login");
     }
 }

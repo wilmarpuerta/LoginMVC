@@ -1,9 +1,18 @@
+using System.Net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using RegistroEmpleado.Data;
 using RegistroEmpleado.Providers;
 using RegistroEmpleado.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Cookis
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -40,13 +49,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+// Autentificacion
+app.UseAuthentication();
 app.UseAuthorization();
 // Session
 app.UseSession();
 //
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
