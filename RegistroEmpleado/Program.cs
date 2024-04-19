@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RegistroEmpleado.Data;
+using RegistroEmpleado.Providers;
+using RegistroEmpleado.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,9 @@ builder.Services.AddDbContext<BaseContext>(options=>
                             options.UseMySql(
                                 builder.Configuration.GetConnectionString("MySqlConnection"),
                                 Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+
+builder.Services.AddSingleton<PathProvider>();
+builder.Services.AddSingleton<HelperUploadFiles>();
 
 var app = builder.Build();
 
