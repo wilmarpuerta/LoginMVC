@@ -3,8 +3,15 @@
     ViewData["Title"] = "Index";
 }
 
+@section Home
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="Admins" asp-action="Index"><img src="~/img/Dasboard.svg"/> Home</a>
+    </li>
+}
+
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="~/img/@Model.PhotoProfile" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Eliminar Usuario</h5>
         <p class="card-text">¿Está seguro que desea eliminar a @Model.Names @Model.LastNames?</p>

@@ -1,6 +1,12 @@
 @{
     ViewData["Title"] = "Manage";
 }
+@section Home
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="Admins" asp-action="Index"><img src="~/img/Dasboard.svg"/> Home</a>
+    </li>
+}
 <a class="btn btn-success mb-3 mt-3" asp-controller="Admins" asp-action="Register">Crear Empleado</a>
 <table class="table table-dark table-striped table-hover">
     <thead>

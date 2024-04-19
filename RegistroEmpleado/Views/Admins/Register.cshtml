@@ -5,6 +5,13 @@
     ViewBag.Favicon = "Login.svg";
 }
 
+@section Home
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="Admins" asp-action="Index"><img src="~/img/Dasboard.svg"/> Home</a>
+    </li>
+}
+
 <section class="container_form">
     <form asp-action="Register" method="post">
         <div class="form">

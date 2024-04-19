@@ -3,6 +3,13 @@
     ViewBag.Favicon = "Home.svg";
 }
 
+@section Home
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index"><img src="~/img/Dasboard.svg"/> Home</a>
+    </li>
+}
+
 <div class="text-center">
     <h1 class="display-4">Welcome @Model.Names</h1>
 </div>

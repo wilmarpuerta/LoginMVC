@@ -2,6 +2,13 @@
     ViewData["Title"] = "Index";
 }
 
+@section Home
+{
+    <li class="nav-item">
+        <a class="nav-link text-white" asp-area="" asp-controller="Admins" asp-action="Index"><img src="~/img/Dasboard.svg"/> Home</a>
+    </li>
+}
+
 <div class="d-flex">
     <div>
         <a asp-controller="Admins" asp-action="Manage" class="btn btn-secondary">Manage employees</a>
