@@ -30,7 +30,7 @@ public class LoginController : Controller
 
         if (userfind != null)
         {
-            HttpContext.Session.SetString("userLog", userfind.Id.ToString());
+            HttpContext.Session.SetInt32("userLog", userfind.Id);
             time.IdUser = userfind.Id;
             time.LoginAt = DateTime.Now;
             time.LogoutAt = null;
@@ -68,10 +68,9 @@ public class LoginController : Controller
     
     public async Task<IActionResult> Logout()
     {
-        var idUserLog = int.Parse(HttpContext.Session.GetString("userLog"));
-        var listRecords = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).ToListAsync();
-        var idRecord = _context.TimeRegisters.OrderByDescending(m => m.Id ).First().Id;
-        var record = _context.TimeRegisters.FirstOrDefault(m => m.Id == idRecord);
+        var idUserLog = HttpContext.Session.GetInt32("userLog");
+        var idRecords = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).OrderByDescending(m => m.Id ).First().Id;
+        var record = _context.TimeRegisters.FirstOrDefault(m => m.Id == idRecords);
         record.LogoutAt = DateTime.Now;
         _context.TimeRegisters.Update(record);
         _context.SaveChanges();

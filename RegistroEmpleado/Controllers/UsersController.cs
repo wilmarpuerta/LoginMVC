@@ -21,8 +21,8 @@ public class UsersController : Controller
 
     public IActionResult Index()
     {
-        var id = HttpContext.Session.GetString("userLog");
-        var user = _context.Users.First(u => u.Id == int.Parse(id));
+        var id = HttpContext.Session.GetInt32("userLog");
+        var user = _context.Users.First(u => u.Id == id);
         return View(user);
     }
 
