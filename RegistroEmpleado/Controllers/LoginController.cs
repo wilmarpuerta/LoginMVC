@@ -30,7 +30,7 @@ public class LoginController : Controller
 
         if (userfind != null)
         {
-            HttpContext.Session.SetInt32("userLog", userfind.Id);
+            HttpContext.Session.SetString("UserLog", userfind.Id.ToString());
             time.IdUser = userfind.Id;
             time.LoginAt = DateTime.Now;
             time.LogoutAt = null;
@@ -47,7 +47,6 @@ public class LoginController : Controller
 
             if (userfind.TipoUser == 1)
             {
-                // return Redirect(ReturnUrl == null ? "/Home" : ReturnUrl);
                 return RedirectToAction("Index", "Admins");
             }
             else
@@ -68,13 +67,12 @@ public class LoginController : Controller
     
     public async Task<IActionResult> Logout()
     {
-        var idUserLog = HttpContext.Session.GetInt32("userLog");
-        var idRecords = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).OrderByDescending(m => m.Id ).First().Id;
-        var record = _context.TimeRegisters.FirstOrDefault(m => m.Id == idRecords);
+        var record = _context.TimeRegisters.First(m => m.Id == int.Parse(HttpContext.Session.GetString("RecordUser")));
         record.LogoutAt = DateTime.Now;
         _context.TimeRegisters.Update(record);
         _context.SaveChanges();
-        HttpContext.Session.Remove("userLog");
+        HttpContext.Session.Remove("UserLog");
+        HttpContext.Session.Remove("RecordUser");
         await HttpContext.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
