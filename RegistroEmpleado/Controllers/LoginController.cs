@@ -20,9 +20,9 @@ public class LoginController : Controller
     {
         if ( HttpContext.Session.GetString("UserLog") != null)
         {
-            var idUser = int.Parse(HttpContext.Session.GetString("UserLog"));
+            var idUser = int.Parse(HttpContext.Session.GetString("UserLog")!);
             var user = _context.Users.FirstOrDefault(u => u.Id == idUser);
-            if (user.TipoUser == 1)
+            if (user?.TipoUser == 1)
             {
                 return RedirectToAction("Index", "Admins");
             }
@@ -36,11 +36,11 @@ public class LoginController : Controller
         return View();
     }
 
-    
-    public IActionResult Acceder(string username, string password, TimeRegister time)
+    [HttpGet]
+    public async Task<IActionResult> Acceder(string username, string password, TimeRegister time)
     {
 
-        var userfind = _context.Users.FirstOrDefault(u => u.Names == username && u.Password == password);
+        var userfind = await _context.Users.FirstOrDefaultAsync(u => u.Names == username && u.Password == password);
 
 
         if (userfind != null)
@@ -56,18 +56,20 @@ public class LoginController : Controller
             {
                 new Claim(ClaimTypes.Name, username)
             };
-            var claimsIdentity = new ClaimsIdentity(claims, "Acceder");
- 
-            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
             if (userfind.TipoUser == 1)
             {
-                return RedirectToAction("Index", "Admins");
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
             }
             else
             {
-                return RedirectToAction("Index", "Users");
+                claims.Add(new Claim(ClaimTypes.Role, "Employee"));
             }
+            
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+ 
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+
+            return RedirectToAction("Index", "Admins");
 
         }
         else
@@ -81,10 +83,10 @@ public class LoginController : Controller
     
     public async Task<IActionResult> Logout()
     {
-        var record = _context.TimeRegisters.First(m => m.Id == int.Parse(HttpContext.Session.GetString("RecordUser")));
+        var record = _context.TimeRegisters.First(m => m.Id == int.Parse(HttpContext.Session.GetString("RecordUser")!));
         record.LogoutAt = DateTime.Now;
         _context.TimeRegisters.Update(record);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         HttpContext.Session.Remove("UserLog");
         HttpContext.Session.Remove("RecordUser");
         await HttpContext.SignOutAsync();

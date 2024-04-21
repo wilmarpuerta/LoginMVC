@@ -7,7 +7,7 @@ using RegistroEmpleado.Models;
 
 namespace RegistroEmpleado.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Employee")]
 public class UsersController : Controller
 {
     private readonly BaseContext _context;

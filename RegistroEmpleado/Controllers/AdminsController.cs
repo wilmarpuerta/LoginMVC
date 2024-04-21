@@ -6,7 +6,7 @@ using RegistroEmpleado.Data;
 
 namespace RegistroEmpleado.Controllers;
 
-[Authorize]
+[Authorize(Roles = "Admin")]
 public class AdminsController : Controller
 {
     private readonly BaseContext _context;
