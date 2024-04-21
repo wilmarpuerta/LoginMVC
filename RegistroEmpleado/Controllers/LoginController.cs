@@ -15,6 +15,7 @@ public class LoginController : Controller
     {
         _context = context;
     }
+    
     public IActionResult Index()
     {
         return View();
@@ -23,7 +24,20 @@ public class LoginController : Controller
     
     public IActionResult Acceder(string username, string password, TimeRegister time)
     {
-        /* var user = _context.Users.AsQueryable(); */
+        if ( HttpContext.Session.GetString("UserLog") != null)
+        {
+            var idUser = int.Parse(HttpContext.Session.GetString("UserLog"));
+            var user = _context.Users.FirstOrDefault(u => u.Id == idUser);
+            if (user.TipoUser == 1)
+            {
+                return RedirectToAction("Index", "Admins");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Users");
+            }
+            
+        }
 
         var userfind = _context.Users.FirstOrDefault(u => u.Names == username && u.Password == password);
 
@@ -63,7 +77,6 @@ public class LoginController : Controller
 
         return View("Index", "Login");
     }
-    
     
     public async Task<IActionResult> Logout()
     {

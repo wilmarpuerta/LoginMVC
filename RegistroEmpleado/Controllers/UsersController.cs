@@ -21,16 +21,10 @@ public class UsersController : Controller
 
     public IActionResult Index()
     {
-        User user = null;
-        
-        if (HttpContext.Session.GetString("UserLog") != null)
-        {
             var idUserLog = int.Parse(HttpContext.Session.GetString("UserLog"));
-            user = _context.Users.First(u => u.Id == idUserLog);
+            var user = _context.Users.First(u => u.Id == idUserLog);
             var idRecord = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).OrderByDescending(m => m.Id ).First().Id;
             HttpContext.Session.SetString("RecordUser", idRecord.ToString());
-            
-        }
         
         return View(user);
     }

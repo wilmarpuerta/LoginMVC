@@ -18,13 +18,9 @@ public class AdminsController : Controller
 
     public IActionResult Index()
     {
-        if (HttpContext.Session.GetInt32("UserLog") != null)
-        {
-            var idUserLog = HttpContext.Session.GetInt32("UserLog");
-            var idRecord = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).OrderByDescending(m => m.Id ).First().Id;
-            HttpContext.Session.SetString("RecordUser", idRecord.ToString());
-            
-        }
+        var idUserLog = int.Parse(HttpContext.Session.GetString("UserLog") ?? string.Empty);
+        var idRecord = _context.TimeRegisters.Where(t => t.IdUser == idUserLog).OrderByDescending(m => m.Id ).First().Id;
+        HttpContext.Session.SetString("RecordUser", idRecord.ToString());
         return View();
     }
 
