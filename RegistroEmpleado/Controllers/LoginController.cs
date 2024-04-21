@@ -18,12 +18,6 @@ public class LoginController : Controller
     
     public IActionResult Index()
     {
-        return View();
-    }
-
-    
-    public IActionResult Acceder(string username, string password, TimeRegister time)
-    {
         if ( HttpContext.Session.GetString("UserLog") != null)
         {
             var idUser = int.Parse(HttpContext.Session.GetString("UserLog"));
@@ -38,6 +32,13 @@ public class LoginController : Controller
             }
             
         }
+        
+        return View();
+    }
+
+    
+    public IActionResult Acceder(string username, string password, TimeRegister time)
+    {
 
         var userfind = _context.Users.FirstOrDefault(u => u.Names == username && u.Password == password);
 
