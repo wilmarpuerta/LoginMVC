@@ -11,11 +11,14 @@
     </li>
 }
 
-<div class="card" style="width: 18rem;">
-    <img src="~/img/@Model.PhotoProfile" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Eliminar Usuario</h5>
-        <p class="card-text">¿Está seguro que desea eliminar a @Model.Names @Model.LastNames?</p>
-        <a asp-controller="Admins" asp-action="DeleteUser" asp-route-id="@Model.Id">Eliminar</a>
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh" >
+    <div class="card text-center" style="width: 18rem;">
+        <img src="~/users/@Model.PhotoProfile" class="card-img-top" alt="Photo profile" style="width: 250px; height: 250px; object-fit: cover">
+        <div class="card-body">
+            <h5 class="card-title">Delete user</h5>
+            <p class="card-text">¿Are you sure you want to delete @Model.Names @Model.LastNames?</p>
+            <a asp-controller="Admins" asp-action="DeleteUser" asp-route-id="@Model.Id" class="btn btn-danger ">Yes</a>
+            <a asp-controller="Admins" asp-action="Manage" class="btn btn-secondary ">No</a>
+        </div>
     </div>
 </div>
