@@ -18,13 +18,11 @@
     </li>
 }
 
-<table class="table  table-bordered mt-5 text-center table-striped table-hover">
-    <thead class="table table-black">
+<a asp-action="Manage"><img src="~/img/Return.svg"></a>
+<h1 class="text-center">Recods</h1>
+<table class="table table-dark table-striped table-hover mt-5 text-center">
+    <thead>
         <tr>
-            <th>Record</th>
-        </tr>
-        <tr>
-            <td>Id</td>
             <td>LoginAt</td>
             <td>LogOffAt</td>
         </tr>
@@ -33,7 +31,6 @@
         @foreach (var Register in Model)
         {
             <tr>
-                <td>@Register.Id</td>
                 <td>@Register.LoginAt</td>
                 <td>@Register.LogoutAt</td>
             </tr>
