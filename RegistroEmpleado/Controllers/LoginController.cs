@@ -41,8 +41,7 @@ public class LoginController : Controller
     {
 
         var userfind = await _context.Users.FirstOrDefaultAsync(u => u.Names == username && u.Password == password);
-
-
+        
         if (userfind != null)
         {
             HttpContext.Session.SetString("UserLog", userfind.Id.ToString());
@@ -68,9 +67,15 @@ public class LoginController : Controller
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
  
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
-            return RedirectToAction("Index", "Admins");
-
+            
+            if (userfind.TipoUser == 1)
+            {
+                return RedirectToAction("Index", "Admins");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Users");
+            }
         }
         else
         {
