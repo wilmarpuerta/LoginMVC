@@ -1,0 +1,23 @@
+﻿
+/* Estilo a la tabla*/
+
+td{
+    vertical-align: middle;
+}
+
+.img-profile{
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.btn-record{
+    text-decoration: none;
+    color: #fff;
+    transition: 200ms;
+}
+
+.btn-record:hover{
+    color: #fff;
+    border-bottom: 3px solid #fff;
+}
