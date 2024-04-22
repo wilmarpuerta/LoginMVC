@@ -53,17 +53,6 @@
     margin-top: 10px;
 }
 
-/* Styles to the register button */
-
-.button{
-    background: #27B43E;
-    text-decoration: none;
-    color: white;
-    padding: 10px 5px;
-    border-radius: 5px;
-}
-
-
 /* Styles for mobile */
 
 @media screen and (max-width: 425px) {

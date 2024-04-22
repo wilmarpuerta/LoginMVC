@@ -15,22 +15,22 @@
 
 <section class="container_form">
     <div class="form">
-        <p class="title">Inicio de sesion</p>
+        <p class="title">Login</p>
         <form asp-controller="Login" asp-action="Acceder" method="get">
             <div class="container_forms">
                 <div class="mb-3">
-                    <label for="nameUser" class="form-label">Nombre del usuario</label>
+                    <label for="nameUser" class="form-label">User name</label>
                     <input type="text" class="form-control @ViewBag.ClaseElemento" id="nameUser" name="username">
                 </div>
             </div>
             <div class="container_forms">
-                <label for="inputPassword5" class="form-label">Contraseña</label>
+                <label for="inputPassword5" class="form-label">Password</label>
                 <input type="password" id="inputPassword5" class="form-control @ViewBag.ClaseElemento" aria-describedby="passwordHelpBlock" name="password">
             </div>
             <!-- sing in button -->
 
             <div class="btn_login">
-                <input type="submit" class="button2" value="Acceder">
+                <input type="submit" class="btn btn-success" value="Login">
             </div>
         </form>
     </div>

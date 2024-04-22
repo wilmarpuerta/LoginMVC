@@ -45,21 +45,3 @@
     flex-direction: column;
     margin-top: 20px;
 }
-
-.button{
-    background: #27B43E;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.button2{
-    background: #27B43E;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
