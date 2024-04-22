@@ -20,3 +20,38 @@
 <div class="text-center">
     <h1 class="display-4">Welcome @Model.Names</h1>
 </div>
+
+  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Control de Acceso</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Record</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="container mt-4">
+    <div class="jumbotron">
+      <h1 class="display-4">Bienvenido al Sistema de Control de Acceso</h1>
+      <p class="lead">Este sistema le permite a los usuarios realizar un seguimiento de sus horas de entrada y salida, así como ver y actualizar su información personal.</p>
+      <hr class="my-4">
+      <p>
+      <a class="btn btn-primary btn-lg" role="button" asp-controller="Login" asp-action="Logout">Cerrar Sesión</a>
+    </div>
+  </div>

@@ -1,27 +1,70 @@
 @model User
-@{
-    ViewData["Title"] = "Profile";
-    ViewBag.Favicon = "Profile.svg";
-}
 
-@section Home
-{
-    <li class="nav-item">
-        <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index"><img src="~/img/Dasboard.svg"/> Home</a>
-    </li>
-}
+<!DOCTYPE html>
+<html lang="en">
 
-@section Session
-{
-    <li class="nav-item">
-        <a class="nav-link text-white" asp-area="" asp-controller="Login" asp-action="Logout"><img src="~/img/Logout.svg" class="m-1"/>Logout</a>
-    </li>
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        .profile-picture {
+            max-width: 200px;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
 
-<div>
+<body>
     <div class="d-flex">
-        <label asp-for="PhotoProfile"></label>
-        <input type="file" name="fotoArchivo">
+        <div>
+            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Profile">
+                Hello @Model.Names!!
+                @if (Model.PhotoProfile != null)
+                {
+                    <img src="~/img/@Model.PhotoProfile" class="m-1 profile-picture" style="max-width: 50px; max-height: 50px;">
+                }
+            </a>
+
+            @if (Model.PhotoProfile != null)
+            {
+                <img src="~/images/@Model.PhotoProfile" alt="Profile Picture" class="profile-picture">
+            }
+            else
+            {
+                <p>No profile picture available.</p>
+            }
+
+            <ul>
+                <li>
+                    <a asp-area="" asp-controller="Users" asp-action="Index">Home</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+
+           @*  <div>
+                <h1>Upload Profile Picture</h1>
+                <form asp-action="Insert" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label asp-for="PhotoProfile">Profile Picture:</label>
+                        <input type="file" name="archivo">
+                    </div>
+                    <button type="submit">Upload</button>
+                </form>
+            </div> *@
+        </div>
+
+        <div>
+            <h1>@Model.Names @Model.LastNames</h1>
+            <h3>@Model.Cedula</h3>
+            <p>@Model.Email</p>
+            <p>@Model.Phone</p>
+        </div>
     </div>
-    <div></div>
-</div>
+</body>
+
+</html>

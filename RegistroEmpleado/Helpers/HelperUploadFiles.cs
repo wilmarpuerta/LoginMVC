@@ -1,19 +1,20 @@
+
 using RegistroEmpleado.Providers;
 
 namespace RegistroEmpleado.Helpers
 {
     public class HelperUploadFiles
     {
-        private PathProvider pathProvider;
+        private readonly PathProvider _pathProvider;
 
         public HelperUploadFiles(PathProvider pathProvider)
         {
-            this.pathProvider = pathProvider;
+            _pathProvider = pathProvider;
         }
 
-        public async Task<String> UploadFilesAsync(IFormFile formFile)
+        public async Task<string> UploadFilesAsync(IFormFile formFile, string fileName)
         {
-            string path = this.pathProvider.MapPath(formFile.FileName);
+            string path = _pathProvider.MapImagePath(fileName);
 
             using (Stream stream = new FileStream(path, FileMode.Create))
             {
