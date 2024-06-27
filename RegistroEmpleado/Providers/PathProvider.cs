@@ -1,23 +1,24 @@
+
 namespace RegistroEmpleado.Providers
 {
-    
-
     public class PathProvider
     {
-        private IWebHostEnvironment hostEnvironment;
+        public enum Folders
+        {
+            Images = 1
+        }
+
+        private readonly IWebHostEnvironment _hostEnvironment;
 
         public PathProvider(IWebHostEnvironment hostEnvironment)
         {
-            this.hostEnvironment = hostEnvironment;
+            _hostEnvironment = hostEnvironment;
         }
 
- public string MapPath(string fileName)
-{
-    string carpeta = "images";
-
-    string path = Path.Combine(this.hostEnvironment.WebRootPath, carpeta, fileName);
-    return path;
-}
-
+        public string MapImagePath(string fileName)
+        {
+            string imagePath = Path.Combine(_hostEnvironment.WebRootPath, "images", fileName);
+            return imagePath;
+        }
     }
 }

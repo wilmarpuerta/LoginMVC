@@ -4,6 +4,7 @@ using RegistroEmpleado.Data;
 using RegistroEmpleado.Helpers;
 using RegistroEmpleado.Providers;
 using RegistroEmpleado.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RegistroEmpleado.Controllers;
 
@@ -29,20 +30,37 @@ public class UsersController : Controller
         return View(user);
     }
 
-    public IActionResult Profile()
-    {
-        return View();
-    }
+  
 
-    [HttpPost]
-    public async Task<IActionResult> Insert(User user, IFormFile fotoArchivo)
+        [HttpPost]
+public async Task<IActionResult> Insert(IFormFile archivo)
+{
+    if (archivo == null || archivo.Length == 0)
     {
-        var nombreArchivo = fotoArchivo.FileName;
-        var pathFoto = await _helperUploadFiles.UploadFilesAsync(fotoArchivo);
-
-        user.PhotoProfile = nombreArchivo;
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
         return RedirectToAction("Profile");
     }
+
+    string nombreArchivo = archivo.FileName;
+    string path = await _helperUploadFiles.UploadFilesAsync(archivo, nombreArchivo);
+
+    var idUserLog = int.Parse(HttpContext.Session.GetString("UserLog"));
+    var user = _context.Users.First(u => u.Id == idUserLog);
+    user.PhotoProfile = nombreArchivo;
+    await _context.SaveChangesAsync();
+
+    return RedirectToAction("Profile");
+}
+
+
+        public async Task<IActionResult> Record(int id)
+        {
+            var timeRegisters = await _context.TimeRegisters.Where(m => m.IdUser == id).ToListAsync();
+            return View(timeRegisters);
+        }
+
+        public async Task<IActionResult> Profile(int id)
+        {
+            return View(await _context.Users.FirstOrDefaultAsync(m => m.Id == id)); 
+        }
+        
 }
